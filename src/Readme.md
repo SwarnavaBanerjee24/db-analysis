@@ -1,4 +1,4 @@
-# Deutsche Bahn: does delay compound along a route?
+# Deutsche Bahn's punctuality analysis: Does delay compound along a route?
 
 A stop-level analysis of about 130M records from the `piebro/deutsche-bahn-data`
 dataset (Nov 2025 to Jul 2026). The question I set out to answer: as a train works
@@ -38,16 +38,5 @@ wrong, an artifact of the broken grain. The fix was to key every per-journey
 calculation on `(train_line_ride_id, date)`. One limitation I left in: a journey that
 runs past midnight gets split in two by the date boundary. It only touches a small
 number of late-night services, so I let it stand.
-
-## Running it
-
-Open `Compounding_Analysis.ipynb` and run it top to bottom:
-
-0. Setup and the journey-key check
-1. Per-stop delay change: net compounding by service type
-2. Mid-route cancellation and survivorship bias
-3. Within-journey delay trajectory
-4. Per-station delay gain and loss
-5. Distribution and tail check, then the conclusion
 
 You'll need Python with duckdb, pandas and matplotlib.
